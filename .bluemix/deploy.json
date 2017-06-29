@@ -152,8 +152,6 @@
       "readonly": false,
       "title": "OpenWhisk Authorization Key",
       "key": "openwhisk_auth"
-    },
-
-
+    }
   ]
 }
