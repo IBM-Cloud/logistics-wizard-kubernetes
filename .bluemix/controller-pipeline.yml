@@ -1,0 +1,46 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: ${REPO_BRANCH}
+    service: ${REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+    fail_stage: false
+    extension_id: ibm.devops.services.pipeline.container.builder
+    target:
+      region_id: ${CONTAINER_REGION_ID}
+      organization: ${CONTAINER_ORG_NAME}
+      space: ${CONTAINER_SPACE_NAME}
+    IMAGE_NAME: lw-controller
+    USE_CACHED_LAYERS: true
+    COMMAND: |
+      #!/bin/bash
+      ./.bluemix/pipeline-BUILD-Docker.sh
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: BLUEMIX_API_KEY
+    value: ${BLUEMIX_API_KEY}
+  - name: CLUSTER_NAME
+    value: ${CLUSTER_NAME}
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
+      application: "not-used"
+    script: |-
+      #!/bin/bash
+      ./.bluemix/pipeline-DEPLOY-Kubernetes.sh

@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 template:
   name: "Deploy Logistics Wizard with Kubernetes"
   description: ""
@@ -7,7 +7,7 @@ template:
     - erp-repo
 
 toolchain:
-  name: 'logistics-wizard-{{timestamp}}'
+  name: "logistics-wizard-{{timestamp}}"
 
 services:
   erp-repo:
@@ -22,19 +22,19 @@ services:
     parameters:
       services:
         - erp-repo
-      name: '{{services.erp-repo.repo_name}}'
+      name: "erp ({{form.pipeline.parameters.branch-name}})"
       ui-pipeline: true
       configuration:
         content:
           $text: erp-pipeline.yml
         env:
           REPO: erp-repo
-          REPO_BRANCH: "dev"
-          CONTAINER_REGION_ID: '{{form.pipeline.parameters.container-region}}'
-          CONTAINER_ORG_NAME: '{{form.pipeline.parameters.container-organization}}'
-          CONTAINER_SPACE_NAME: '{{form.pipeline.parameters.container-space}}'
-          BLUEMIX_API_KEY: '{{form.pipeline.parameters.deploy-bluemix-api-key}}'
-          CLUSTER_NAME: '{{form.pipeline.parameters.deploy-cluster-name}}'
+          REPO_BRANCH: "{{form.pipeline.parameters.branch-name}}"
+          CONTAINER_REGION_ID: "{{form.pipeline.parameters.container-region}}"
+          CONTAINER_ORG_NAME: "{{form.pipeline.parameters.container-organization}}"
+          CONTAINER_SPACE_NAME: "{{form.pipeline.parameters.container-space}}"
+          BLUEMIX_API_KEY: "{{form.pipeline.parameters.deploy-bluemix-api-key}}"
+          CLUSTER_NAME: "{{form.pipeline.parameters.deploy-cluster-name}}"
           REGION_ID: "{{deploy.parameters.selected-region}}"
           ORG_NAME: "{{deploy.parameters.selected-organization}}"
           SPACE_NAME: "{{deploy.parameters.selected-space}}"
@@ -46,6 +46,28 @@ services:
       repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-controller"
       type: fork
       has_issues: false
+  controller-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - controller-repo
+      name: "controller ({{form.pipeline.parameters.branch-name}})"
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: controller-pipeline.yml
+        env:
+          REPO: controller-repo
+          REPO_BRANCH: "{{form.pipeline.parameters.branch-name}}"
+          CONTAINER_REGION_ID: "{{form.pipeline.parameters.container-region}}"
+          CONTAINER_ORG_NAME: "{{form.pipeline.parameters.container-organization}}"
+          CONTAINER_SPACE_NAME: "{{form.pipeline.parameters.container-space}}"
+          BLUEMIX_API_KEY: "{{form.pipeline.parameters.deploy-bluemix-api-key}}"
+          CLUSTER_NAME: "{{form.pipeline.parameters.deploy-cluster-name}}"
+          REGION_ID: "{{deploy.parameters.selected-region}}"
+          ORG_NAME: "{{deploy.parameters.selected-organization}}"
+          SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        execute: true
   webui-repo:
     service_id: githubpublic
     parameters:
@@ -64,9 +86,10 @@ services:
 form:
   pipeline:
     parameters:
-      deploy-region: 'ibm:yp:us-south'
-      container-region: 'ibm:yp:us-south'
-      deploy-bluemix-api-key: ''
-      deploy-cluster-name: ''
+      deploy-region: "ibm:yp:us-south"
+      container-region: "ibm:yp:us-south"
+      deploy-bluemix-api-key: ""
+      deploy-cluster-name: ""
+      branch-name: "dev"
     schema:
       $ref: deploy.json
