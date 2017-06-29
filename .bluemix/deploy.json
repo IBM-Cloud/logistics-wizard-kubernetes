@@ -12,7 +12,7 @@
       "description": "The Bluemix org",
       "type": "string"
     },
-   "selected-space": {
+    "selected-space": {
       "description": "The Bluemix space",
       "type": "string"
     },
@@ -52,11 +52,11 @@
     "deploy-bluemix-api-key"
   ],
   "form": [
-   {
+    {
       "type": "validator",
       "url": "/devops/setup/bm-helper/helper.html"
-   },
-   {
+    },
+    {
       "type": "text",
       "readonly": false,
       "title": "Webui App Name",
@@ -66,8 +66,7 @@
       "type": "table",
       "columnCount": 3,
       "widths": ["33%", "33%", "33%"],
-      "items": [
-        {
+      "items": [{
           "type": "label",
           "title": "Region"
         },
@@ -98,9 +97,8 @@
     {
       "type": "table",
       "columnCount": 1,
-      "widths": [ "100%" ],
-      "items": [
-        {
+      "widths": ["100%"],
+      "items": [{
           "type": "label",
           "title": "Docker Image Build"
         },
@@ -114,8 +112,7 @@
       "type": "table",
       "columnCount": 3,
       "widths": ["33%", "33%", "33%"],
-      "items": [
-        {
+      "items": [{
           "type": "label",
           "title": "Region (only US South is supported)"
         },

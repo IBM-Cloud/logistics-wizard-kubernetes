@@ -5,7 +5,6 @@ template:
   required:
     - erp-build
     - erp-repo
-    - deploy
 
 toolchain:
   name: 'logistics-wizard-{{timestamp}}'
