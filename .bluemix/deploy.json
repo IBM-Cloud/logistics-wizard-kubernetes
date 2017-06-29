@@ -49,7 +49,8 @@
     "webui-app-name",
     "container-region", "container-organization", "container-space",
     "deploy-cluster-name",
-    "deploy-bluemix-api-key"
+    "deploy-bluemix-api-key",
+    "openwhisk_auth"
   ],
   "form": [
     {
