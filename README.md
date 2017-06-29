@@ -34,7 +34,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. **To get started, click this button:**
 
-  [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Bluemix/logistics-wizard-kubernetes.git)
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/logistics-wizard-kubernetes&branch=master)
 
 1. The toolchain configuration page opens.
 
