@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Logistics Wizard with Kubernetes Delivery Pipeline",
+  "description": "Deployment of the Logistics Wizard with Kubernetes",
+  "type": "object",
+  "properties": {
+    "selected-region": {
+      "description": "The Bluemix region",
+      "type": "string"
+    },
+    "selected-organization": {
+      "description": "The Bluemix org",
+      "type": "string"
+    },
+   "selected-space": {
+      "description": "The Bluemix space",
+      "type": "string"
+    },
+    "webui-app-name": {
+      "description": "Name of the WEBUI App",
+      "type": "string"
+    },
+    "openwhisk_auth": {
+      "type": "string"
+    },
+    "deploy-bluemix-api-key": {
+      "description": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
+      "type": "string"
+    },
+    "deploy-cluster-name": {
+      "description": "Existing Kubernetes cluster name",
+      "type": "string"
+    },
+    "container-region": {
+      "description": "The bluemix region",
+      "type": "string"
+    },
+    "container-organization": {
+      "description": "The bluemix org",
+      "type": "string"
+    },
+    "container-space": {
+      "description": "Name of the space configured for IBM Container Service",
+      "type": "string"
+    }
+  },
+  "required": [
+    "selected-region", "selected-organization", "selected-space",
+    "webui-app-name",
+    "container-region", "container-organization", "container-space",
+    "deploy-cluster-name",
+    "deploy-bluemix-api-key"
+  ],
+  "form": [
+   {
+      "type": "validator",
+      "url": "/devops/setup/bm-helper/helper.html"
+   },
+   {
+      "type": "text",
+      "readonly": false,
+      "title": "Webui App Name",
+      "key": "webui-app-name"
+    },
+    {
+      "type": "table",
+      "columnCount": 3,
+      "widths": ["33%", "33%", "33%"],
+      "items": [
+        {
+          "type": "label",
+          "title": "Region"
+        },
+        {
+          "type": "label",
+          "title": "Organization"
+        },
+        {
+          "type": "label",
+          "title": "Space"
+        },
+        {
+          "type": "select",
+          "key": "selected-region"
+        },
+        {
+          "type": "select",
+          "key": "selected-organization"
+        },
+        {
+          "type": "select",
+          "key": "selected-space",
+          "readonly": false
+        }
+      ]
+    },
+
+    {
+      "type": "table",
+      "columnCount": 1,
+      "widths": [ "100%" ],
+      "items": [
+        {
+          "type": "label",
+          "title": "Docker Image Build"
+        },
+        {
+          "type": "label",
+          "title": "To build the Docker images with the toolchain, specify a Bluemix space configured with quota for IBM Containers. If you have no space configured with IBM Containers quota, leave the default options. In that case, you will need to build and push the Docker image outside of this toolchain."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columnCount": 3,
+      "widths": ["33%", "33%", "33%"],
+      "items": [
+        {
+          "type": "label",
+          "title": "Region (only US South is supported)"
+        },
+        {
+          "type": "label",
+          "title": "Organization"
+        },
+        {
+          "type": "label",
+          "title": "Space"
+        },
+        {
+          "type": "select",
+          "key": "container-region"
+        },
+        {
+          "type": "select",
+          "key": "container-organization"
+        },
+        {
+          "type": "select",
+          "key": "container-space",
+          "readonly": false
+        }
+      ]
+    },
+
+    {
+      "type": "label",
+      "title": "The recommendation service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "OpenWhisk Authorization Key",
+      "key": "openwhisk_auth"
+    },
+
+
+  ]
+}

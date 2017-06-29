@@ -1,0 +1,73 @@
+version: '2'
+template:
+  name: "Deploy Logistics Wizard with Kubernetes"
+  description: ""
+  required:
+    - erp-build
+    - erp-repo
+    - deploy
+
+toolchain:
+  name: 'logistics-wizard-{{timestamp}}'
+
+services:
+  erp-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: "logistics-wizard-erp"
+      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-erp"
+      type: fork
+      has_issues: false
+  erp-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - erp-repo
+      name: '{{services.erp-repo.repo_name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: erp-pipeline.yml
+        env:
+          REPO: erp-repo
+          REPO_BRANCH: "dev"
+          CONTAINER_REGION_ID: '{{form.pipeline.parameters.container-region}}'
+          CONTAINER_ORG_NAME: '{{form.pipeline.parameters.container-organization}}'
+          CONTAINER_SPACE_NAME: '{{form.pipeline.parameters.container-space}}'
+          BLUEMIX_API_KEY: '{{form.pipeline.parameters.deploy-bluemix-api-key}}'
+          CLUSTER_NAME: '{{form.pipeline.parameters.deploy-cluster-name}}'
+          REGION_ID: "{{deploy.parameters.selected-region}}"
+          ORG_NAME: "{{deploy.parameters.selected-organization}}"
+          SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        execute: true
+  controller-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: "logistics-wizard-controller"
+      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-controller"
+      type: fork
+      has_issues: false
+  webui-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: "logistics-wizard-webui"
+      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-webui"
+      type: fork
+      has_issues: false
+  recommendation-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: "logistics-wizard-recommendation"
+      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-recommendation"
+      type: fork
+      has_issues: false
+
+form:
+  pipeline:
+    parameters:
+      deploy-region: 'ibm:yp:us-south'
+      container-region: 'ibm:yp:us-south'
+      deploy-bluemix-api-key: ''
+      deploy-cluster-name: ''
+    schema:
+      $ref: deploy.json
