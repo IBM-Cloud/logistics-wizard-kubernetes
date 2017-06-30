@@ -6,7 +6,10 @@ stages:
     branch: ${REPO_BRANCH}
     service: ${REPO}
   triggers:
-  - type: stage
+  - type: commit
+  properties:
+  - name: CF_APP_NAME
+    value: ${CF_APP_NAME}
   jobs:
   - name: Blue/Green Deploy
     type: deployer
@@ -14,7 +17,8 @@ stages:
       region_id: ${REGION_ID}
       organization: ${ORG_NAME}
       space: ${SPACE_NAME}
-      application: ${CF_APP_NAME}
+      api_key: ${BLUEMIX_API_KEY}
+      kubernetes_cluster: ${CLUSTER_NAME}
     script: |-
       #!/bin/bash
       . ./.bluemix/pipeline-BUILD-Kubernetes.sh

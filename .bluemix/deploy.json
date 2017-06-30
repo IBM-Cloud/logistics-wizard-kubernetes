@@ -168,7 +168,7 @@
       ]
     },
     {
-      "type": "text",
+      "type": "password",
       "title": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
       "description": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
       "key": "deploy-bluemix-api-key"
