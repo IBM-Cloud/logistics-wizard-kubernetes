@@ -126,6 +126,8 @@ services:
         env:
           REPO: recommendation-repo
           REPO_BRANCH: "{{form.pipeline.parameters.branch-name}}"
+          BLUEMIX_API_KEY: "{{form.pipeline.parameters.deploy-bluemix-api-key}}"
+          CLUSTER_NAME: "{{form.pipeline.parameters.deploy-cluster-name}}"
           OPENWHISK_AUTH: "{{form.pipeline.parameters.openwhisk_auth}}"
           PACKAGE_NAME: "{{form.pipeline.parameters.recommendation-package-name}}"
           CLOUDANT_DATABASE: "recommendations"

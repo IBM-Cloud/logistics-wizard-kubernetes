@@ -1,28 +1,10 @@
 ---
 stages:
-- name: BUILD
+- name: DEPLOY
   inputs:
   - type: git
     branch: ${REPO_BRANCH}
     service: ${REPO}
-  triggers:
-  - type: commit
-  properties:
-  - name: CONTROLLER_SERVICE
-    value: ""
-  jobs:
-  - name: Build
-    type: builder
-    artifact_dir: dist
-    build_type: shell
-    script: |-
-      #!/bin/bash
-      ./.bluemix/pipeline-BUILD.sh
-- name: DEPLOY
-  inputs:
-  - type: job
-    stage: BUILD
-    job: Build
   triggers:
   - type: stage
   jobs:
@@ -35,4 +17,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      . ./.bluemix/pipeline-BUILD-Kubernetes.sh
+      ./.bluemix/pipeline-BUILD.sh
+      cd dist
       ./.bluemix/pipeline-DEPLOY.sh

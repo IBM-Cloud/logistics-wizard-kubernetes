@@ -31,6 +31,10 @@ stages:
   - name: OPENWHISK_AUTH
     value: ${OPENWHISK_AUTH}
     type: secure
+  - name: BLUEMIX_API_KEY
+    value: ${BLUEMIX_API_KEY}
+  - name: CLUSTER_NAME
+    value: ${CLUSTER_NAME}
   - name: CONTROLLER_SERVICE
     value: ""
     type: text
@@ -44,4 +48,5 @@ stages:
       application: "not-used"
     script: |-
       #!/bin/bash
+      . ./.bluemix/pipeline-DEPLOY-Kubernetes.sh
       ./.bluemix/pipeline-DEPLOY.sh
