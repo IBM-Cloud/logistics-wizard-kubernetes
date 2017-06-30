@@ -74,7 +74,6 @@ services:
           REGION_ID: "{{form.pipeline.parameters.selected-region}}"
           ORG_NAME: "{{form.pipeline.parameters.selected-organization}}"
           SPACE_NAME: "{{form.pipeline.parameters.selected-space}}"
-          OPENWHISK_AUTH: "{{form.pipeline.parameters.openwhisk_auth}}"
           RECOMMENDATION_PACKAGE_NAME: "{{form.pipeline.parameters.recommendation-package-name}}"
         execute: true
 
@@ -128,7 +127,6 @@ services:
           REPO_BRANCH: "{{form.pipeline.parameters.branch-name}}"
           BLUEMIX_API_KEY: "{{form.pipeline.parameters.deploy-bluemix-api-key}}"
           CLUSTER_NAME: "{{form.pipeline.parameters.deploy-cluster-name}}"
-          OPENWHISK_AUTH: "{{form.pipeline.parameters.openwhisk_auth}}"
           PACKAGE_NAME: "{{form.pipeline.parameters.recommendation-package-name}}"
           CLOUDANT_DATABASE: "recommendations"
           SPACE_NAME: "{{form.pipeline.parameters.selected-space}}"

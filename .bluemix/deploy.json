@@ -20,9 +20,6 @@
       "description": "Name of the WEBUI App",
       "type": "string"
     },
-    "openwhisk_auth": {
-      "type": "string"
-    },
     "deploy-bluemix-api-key": {
       "description": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
       "type": "string"
@@ -49,8 +46,7 @@
     "webui-app-name",
     "container-region", "container-organization", "container-space",
     "deploy-cluster-name",
-    "deploy-bluemix-api-key",
-    "openwhisk_auth"
+    "deploy-bluemix-api-key"
   ],
   "form": [
     {
@@ -139,17 +135,6 @@
           "readonly": false
         }
       ]
-    },
-
-    {
-      "type": "label",
-      "title": "The recommendation service relies on OpenWhisk actions. To deploy these actions, the pipeline requires your OpenWhisk authorization key. Make sure to enter the authorization key associated with the space where the applications will be deployed."
-    },
-    {
-      "type": "text",
-      "readonly": false,
-      "title": "OpenWhisk Authorization Key",
-      "key": "openwhisk_auth"
     }
   ]
 }

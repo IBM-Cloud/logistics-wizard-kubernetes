@@ -28,16 +28,10 @@ stages:
   - name: CLOUDANT_DATABASE
     value: ${CLOUDANT_DATABASE}
     type: text
-  - name: OPENWHISK_AUTH
-    value: ${OPENWHISK_AUTH}
-    type: secure
   - name: BLUEMIX_API_KEY
     value: ${BLUEMIX_API_KEY}
   - name: CLUSTER_NAME
     value: ${CLUSTER_NAME}
-  - name: CONTROLLER_SERVICE
-    value: ""
-    type: text
   jobs:
   - name: Deploy
     type: deployer

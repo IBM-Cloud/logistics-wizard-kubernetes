@@ -33,8 +33,6 @@ stages:
     value: ${BLUEMIX_API_KEY}
   - name: CLUSTER_NAME
     value: ${CLUSTER_NAME}
-  - name: OPENWHISK_AUTH
-    value: "${OPENWHISK_AUTH}"
   - name: RECOMMENDATION_PACKAGE_NAME
     value: "${RECOMMENDATION_PACKAGE_NAME}"
   jobs:
