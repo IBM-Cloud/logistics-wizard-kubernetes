@@ -137,7 +137,7 @@ services:
 form:
   pipeline:
     parameters:
-      deploy-region: "ibm:yp:us-south"
+      selected-region: "ibm:yp:us-south"
       container-region: "ibm:yp:us-south"
       deploy-bluemix-api-key: ""
       deploy-cluster-name: ""
