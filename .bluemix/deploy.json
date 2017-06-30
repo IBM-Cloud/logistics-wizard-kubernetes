@@ -53,6 +53,21 @@
       "type": "validator",
       "url": "/devops/setup/bm-helper/helper.html"
     },
+
+    {
+      "type": "table",
+      "columnCount": 1,
+      "widths": ["100%"],
+      "items": [{
+          "type": "label",
+          "title": "Web App and OpenWhisk actions"
+        },
+        {
+          "type": "label",
+          "title": "Define the name and location of the Logistics Wizard web application. Make sure to pick a unique name. Additionally the OpenWhisk actions for the weather recommendation service will be deployed to the same space."
+        }
+      ]
+    },
     {
       "type": "text",
       "readonly": false,
@@ -65,7 +80,7 @@
       "widths": ["33%", "33%", "33%"],
       "items": [{
           "type": "label",
-          "title": "Region"
+          "title": "Region (only US South is supported)"
         },
         {
           "type": "label",
@@ -135,6 +150,34 @@
           "readonly": false
         }
       ]
+    },
+
+    {
+      "type": "table",
+      "columnCount": 1,
+      "widths": [ "100%" ],
+      "items": [
+        {
+          "type": "label",
+          "title": "Kubernetes"
+        },
+        {
+          "type": "label",
+          "title": "Specify the name of an existing cluster where to deploy the service.s The Bluemix API key is used to access the IBM Container Service API and interact with the cluster."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
+      "description": "Bluemix API key (Obtain one using 'bx iam api-key-create my-new-key')",
+      "key": "deploy-bluemix-api-key"
+    },
+    {
+      "type": "text",
+      "title": "Existing Kubernetes cluster name where Istio has been installed",
+      "description": "Existing Kubernetes cluster name  where Istio has been installed",
+      "key": "deploy-cluster-name"
     }
   ]
 }
