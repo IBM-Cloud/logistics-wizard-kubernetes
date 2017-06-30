@@ -15,7 +15,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 1. Install Istio from https://istio.io/docs/tasks/installing-istio.html
 
    ```
-   kubectl apply -f install/kubernetes/istio-rbac-beta.yaml
+   kubectl apply -f install/kubernetes/istio-rbac-alpha.yaml
    kubectl apply -f install/kubernetes/istio.yaml
    kubectl apply -f install/kubernetes/addons/prometheus.yaml
    kubectl apply -f install/kubernetes/addons/grafana.yaml
@@ -30,7 +30,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Ensure you have 2GB of free memory and space for 4 additional services in your Bluemix organization.
 
-1. It is recommended to create a new space named `logistics-wizard` in your Bluemix organization. This helps grouping the apps and services together in the console.
+1. It is recommended to create a new space named `logistics-wizard-kube` in your Bluemix organization. This helps grouping the apps and services together in the console.
 
 1. **To get started, click this button:**
 
@@ -50,17 +50,19 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Select the Delivery Pipeline box.
 
-1. Ensure the app names are unique.
+1. Give a unique name to the Logistics Wizard web application
 
 1. Select the region, organization and space where you want to deploy the application.
 
-1. Set your OpenWhisk Authorization Key. You can find your OpenWhisk key in the [Bluemix console here](https://console.ng.bluemix.net/openwhisk/cli). When doing so, make sure you are in the same region/organization/space where you are deploying the apps. The authorization key is specific to a given space. In the CLI configuration page, the authorization key is after the `--auth` parameter. As example in the following, the authorization key is `1234-4567-8901-2345:tonywinBtm00001112221`:
+   :warning: Make sure the organization and the space have no space in their names.
 
-  ```
-  wsk property set --apihost openwhisk.ng.bluemix.net --auth 1234-4567-8901-2345:tonywinBtm00001112221
-  ```
+   :warning: Only the US South region is currently supported.
 
-1. You can leave the [coveralls][coveralls_url] tokens empty - this is really needed only for the main deployment we do in our team.
+1. Select the region, organization and space where quota for IBM Containers have been specified. If you never used the IBM Containers before, you may need to initialize one space with IBM Container quotas.
+
+1. Specify a Bluemix API key. You can obtain one using `bx iam api-key-create my-new-key` or from the Bluemix console under Manage / Security / Bluemix API Keys. The API key is used to interact with the Bluemix Container Service.
+
+1. Specify the name of an existing Kubernetes cluster where you have installed Istio.
 
 1. Click Create
 
@@ -68,9 +70,11 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Your apps are deployed. Head over the [walkthrough](https://github.com/IBM-Bluemix/logistics-wizard/blob/master/WALKTHROUGH.md) for a tour of the app.
 
-## Using the deployed services
+## Using the Istio addons
 
 ### Grafana
+
+The Grafana addon provides an Istio dashboard visualization of the metrics (request rates, success/failure rates) in the cluster.
 
    ```
    kubectl port-forward $(kubectl get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
