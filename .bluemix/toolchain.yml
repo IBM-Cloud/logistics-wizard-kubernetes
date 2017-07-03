@@ -139,6 +139,7 @@ form:
     parameters:
       selected-region: "ibm:yp:us-south"
       container-region: "ibm:yp:us-south"
+      webui-app-name: "logistics-wizard-webui-{{timestamp}}"
       deploy-bluemix-api-key: ""
       deploy-cluster-name: ""
       branch-name: "dev"
