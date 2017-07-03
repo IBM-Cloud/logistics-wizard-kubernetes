@@ -2,17 +2,21 @@
 
 This repository is part of the larger [Logistics Wizard](https://github.com/IBM-Bluemix/logistics-wizard) project.
 
-:warning: WORK IN PROGRESS
-
 ## Overview
 
 In this variation of the Logistics Wizard deployment, the ERP and Controller services are deployed as containers within a Kubernetes cluster. The web user interface stays deployed as a Cloud Foundry application.
 
-## Prepare your Kubernetes cluster
+## Prerequisites
 
-1. Have a Kubernetes cluster
+1. Ensure you have a [GitHub](https://github.com/) account.
 
-1. Install Istio from https://istio.io/docs/tasks/installing-istio.html
+1. Ensure you have a [Bluemix](https://ibm.com/bluemix) account.
+
+1. Ensure you have a [Kubernetes cluster in IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch?env_id=ibm:yp:us-south)
+
+1. Install Istio from https://istio.io/docs/tasks/installing-istio.html in your Kubernetes cluster
+
+   The following commands should be executed once you have retrieved the Istio installation:
 
    ```
    kubectl apply -f install/kubernetes/istio-rbac-alpha.yaml
@@ -24,11 +28,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 ## Deploy the toolchain in IBM Bluemix
 
-1. Ensure you have a [GitHub](https://github.com/) account.
-
-1. Ensure you have a [Bluemix](https://ibm.com/bluemix) account.
-
-1. Ensure you have 2GB of free memory and space for 4 additional services in your Bluemix organization.
+1. Ensure you have 1GB of free memory and space for 4 additional services in your Bluemix organization.
 
 1. It is recommended to create a new space named `logistics-wizard-kube` in your Bluemix organization. This helps grouping the apps and services together in the console.
 
@@ -40,13 +40,13 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Give a name to your toolchain. This name is used as the prefix for the deployed applications. The name must be unique within your organization.
 
-  > A simple trick is to use your name or initials or to leave the default generated name.
+   > A simple trick is to use your name or initials or to leave the default generated name.
 
 1. Select the GitHub box.
 
 1. Optionally change the name of the GitHub repositories that will be created in your GitHub account.
 
-  > You can choose to fork the main repositories so that you can import changes as they become available or to clone the repositories.
+   > You can choose to fork the main repositories so that you can import changes as they become available or to clone the repositories.
 
 1. Select the Delivery Pipeline box.
 
@@ -62,11 +62,11 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Specify a Bluemix API key. You can obtain one using `bx iam api-key-create my-new-key` or from the Bluemix console under Manage / Security / Bluemix API Keys. The API key is used to interact with the Bluemix Container Service.
 
-1. Specify the name of an existing Kubernetes cluster where you have installed Istio.
+1. Specify the name of the existing Kubernetes cluster where you have installed Istio.
 
 1. Click Create
 
-1. Once the toolchain is created, you will end up with several delivery pipelines for all applications in the sample. Wait for the pipelines to deploy all the apps. You can open all pipelines in new browser tabs to follow the deployments or you can wait for all apps to be ready in the Bluemix dashboard.
+1. Once the toolchain is created, you will end up with several delivery pipelines for all applications in the sample. Wait for the pipelines to build all Docker images and deploy all the apps. You can open all pipelines in new browser tabs to follow the deployments or you can wait for all apps to be ready in the Bluemix dashboard.
 
 1. Your apps are deployed. Head over the [walkthrough](https://github.com/IBM-Bluemix/logistics-wizard/blob/master/WALKTHROUGH.md) for a tour of the app.
 
@@ -82,6 +82,8 @@ The Grafana addon provides an Istio dashboard visualization of the metrics (requ
 
    http://localhost:3000/dashboard/db/istio-dashboard
 
+   ![Istio Dashboard](./istio.png)
+
 ### dotviz
 
    ```
@@ -95,7 +97,7 @@ The Grafana addon provides an Istio dashboard visualization of the metrics (requ
 
    ```
    kubectl delete -f install/kubernetes/istio.yaml
-   kubectl delete -f install/kubernetes/istio-rbac-beta.yaml
+   kubectl delete -f install/kubernetes/istio-rbac-alpha.yaml
    kubectl delete -f install/kubernetes/addons/
    kubectl delete istioconfigs --all
    kubectl delete thirdpartyresource istio-config.istio.io
