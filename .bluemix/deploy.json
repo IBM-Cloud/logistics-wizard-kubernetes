@@ -39,6 +39,22 @@
     "container-space": {
       "description": "Name of the space configured for IBM Container Service",
       "type": "string"
+    },
+    "erp-branch-name": {
+      "description": "ERP branch name to deploy",
+      "type": "string"
+    },
+    "controller-branch-name": {
+      "description": "Controller branch name to deploy",
+      "type": "string"
+    },
+    "webui-branch-name": {
+      "description": "Web UI branch name to deploy",
+      "type": "string"
+    },
+    "recommendation-branch-name": {
+      "description": "Recommendation branch name to deploy",
+      "type": "string"
     }
   },
   "required": [
@@ -46,7 +62,9 @@
     "webui-app-name",
     "container-region", "container-organization", "container-space",
     "deploy-cluster-name",
-    "deploy-bluemix-api-key"
+    "deploy-bluemix-api-key",
+    "erp-branch-name", "controller-branch-name",
+    "webui-branch-name", "recommendation-branch-name"
   ],
   "form": [
     {
@@ -178,6 +196,40 @@
       "title": "Existing Kubernetes cluster name where Istio has been installed",
       "description": "Existing Kubernetes cluster name  where Istio has been installed",
       "key": "deploy-cluster-name"
+    },
+
+    {
+      "type": "table",
+      "columnCount": 1,
+      "widths": ["100%"],
+      "items": [{
+        "type": "label",
+        "title": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev."
+      }]
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "ERP Branch Name",
+      "key": "erp-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Controller Branch Name",
+      "key": "controller-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Web UI Branch Name",
+      "key": "webui-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Recommendation Branch Name",
+      "key": "recommendation-branch-name"
     }
   ]
 }
