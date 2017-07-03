@@ -48,6 +48,8 @@ stages:
   - type: job
     stage: BUILD
     job: Build
+  triggers:
+  - type: task
   jobs:
   - name: Undeploy
     type: deployer
