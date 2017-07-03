@@ -86,12 +86,13 @@ The Grafana addon provides an Istio dashboard visualization of the metrics (requ
 
 ### dotviz
 
+Servicegraph shows the connections between services.
+
    ```
    kubectl port-forward $(kubectl get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}') 8088:8088
    ```
 
    http://localhost:8088/dotviz
-
 
 ### Uninstall Istio
 
