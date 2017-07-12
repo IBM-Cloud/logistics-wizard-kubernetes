@@ -39,7 +39,8 @@ stages:
       region_id: ${REGION_ID}
       organization: ${ORG_NAME}
       space: ${SPACE_NAME}
-      application: "not-used"
+      api_key: ${BLUEMIX_API_KEY}
+      kubernetes_cluster: ${CLUSTER_NAME}
     script: |-
       #!/bin/bash
       . ./.bluemix/pipeline-DEPLOY-Kubernetes.sh
