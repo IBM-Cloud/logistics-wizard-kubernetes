@@ -142,10 +142,10 @@ form:
       webui-app-name: "logistics-wizard-webui-{{timestamp}}"
       deploy-bluemix-api-key: ""
       deploy-cluster-name: ""
-      erp-branch-name: "dev"
-      controller-branch-name: "dev"
-      webui-branch-name: "dev"
-      recommendation-branch-name: "dev"
+      erp-branch-name: "master"
+      controller-branch-name: "master"
+      webui-branch-name: "master"
+      recommendation-branch-name: "master"
       recommendation-package-name: "lwr"
     schema:
       $ref: deploy.json
