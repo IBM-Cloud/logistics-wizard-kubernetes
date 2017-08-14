@@ -6,6 +6,8 @@ This repository is part of the larger [Logistics Wizard](https://github.com/IBM-
 
 In this variation of the Logistics Wizard deployment, the ERP and Controller services are deployed as containers within a Kubernetes cluster. The web user interface stays deployed as a Cloud Foundry application.
 
+   ![Architecture Diagram](./lw_kube_architecture.png)
+
 ## Prerequisites
 
 1. Ensure you have a [GitHub](https://github.com/) account.
