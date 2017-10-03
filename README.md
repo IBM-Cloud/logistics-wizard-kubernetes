@@ -78,7 +78,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 The Grafana addon provides an Istio dashboard visualization of the metrics (request rates, success/failure rates) in the cluster.
 
    ```
-   kubectl port-forward $(kubectl get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
+   kubectl port-forward $(kubectl get pod -l app=grafana -n istio-system -o jsonpath='{.items[0].metadata.name}') -n istio-system 3000:3000
    ```
 
    http://localhost:3000/dashboard/db/istio-dashboard
@@ -90,7 +90,7 @@ The Grafana addon provides an Istio dashboard visualization of the metrics (requ
 Servicegraph shows the connections between services.
 
    ```
-   kubectl port-forward $(kubectl get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}') 8088:8088
+   kubectl port-forward $(kubectl get pod -l app=servicegraph -n istio-system -o jsonpath='{.items[0].metadata.name}') -n istio-system 8088:8088
    ```
 
    http://localhost:8088/dotviz
