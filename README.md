@@ -14,14 +14,13 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Ensure you have a [Bluemix](https://ibm.com/bluemix) account.
 
-1. Ensure you have a [Kubernetes cluster in IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch?env_id=ibm:yp:us-south)
+1. Ensure you have a [Kubernetes cluster in IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch?env_id=ibm:yp:us-south) with Kubernetes 1.7.4 or newer installed.
 
-1. Install Istio from https://istio.io/docs/tasks/installing-istio.html in your Kubernetes cluster
+1. Install Istio 0.2.6 from https://istio.io/docs/tasks/installing-istio.html in your Kubernetes cluster
 
    The following commands should be executed once you have retrieved the Istio installation:
 
    ```
-   kubectl apply -f install/kubernetes/istio-rbac-alpha.yaml
    kubectl apply -f install/kubernetes/istio.yaml
    kubectl apply -f install/kubernetes/addons/prometheus.yaml
    kubectl apply -f install/kubernetes/addons/grafana.yaml
@@ -99,9 +98,6 @@ Servicegraph shows the connections between services.
 ### Uninstall Istio
 
    ```
-   kubectl delete -f install/kubernetes/istio.yaml
-   kubectl delete -f install/kubernetes/istio-rbac-alpha.yaml
    kubectl delete -f install/kubernetes/addons/
-   kubectl delete istioconfigs --all
-   kubectl delete thirdpartyresource istio-config.istio.io
+   kubectl delete -f install/kubernetes/istio.yaml
    ```
