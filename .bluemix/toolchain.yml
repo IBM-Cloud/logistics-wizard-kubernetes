@@ -20,7 +20,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: "logistics-wizard-erp"
-      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-erp"
+      repo_url: "https://github.com/IBM-Cloud/logistics-wizard-erp"
       type: fork
       has_issues: false
   erp-build:
@@ -50,7 +50,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: "logistics-wizard-controller"
-      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-controller"
+      repo_url: "https://github.com/IBM-Cloud/logistics-wizard-controller"
       type: fork
       has_issues: false
   controller-build:
@@ -81,7 +81,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: "logistics-wizard-webui"
-      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-webui"
+      repo_url: "https://github.com/IBM-Cloud/logistics-wizard-webui"
       type: fork
       has_issues: false
   webui-build:
@@ -109,7 +109,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: "logistics-wizard-recommendation"
-      repo_url: "https://github.com/IBM-Bluemix/logistics-wizard-recommendation"
+      repo_url: "https://github.com/IBM-Cloud/logistics-wizard-recommendation"
       type: fork
       has_issues: false
   recommendation-build:

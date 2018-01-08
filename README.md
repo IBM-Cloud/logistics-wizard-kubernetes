@@ -1,6 +1,6 @@
 # Logistics Wizard with Kubernetes
 
-This repository is part of the larger [Logistics Wizard](https://github.com/IBM-Bluemix/logistics-wizard) project.
+This repository is part of the larger [Logistics Wizard](https://github.com/IBM-Cloud/logistics-wizard) project.
 
 ## Overview
 
@@ -35,7 +35,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. **To get started, click this button:**
 
-   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/logistics-wizard-kubernetes&branch=master)
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Cloud/logistics-wizard-kubernetes&branch=master)
 
 1. The toolchain configuration page opens.
 
@@ -69,7 +69,7 @@ In this variation of the Logistics Wizard deployment, the ERP and Controller ser
 
 1. Once the toolchain is created, you will end up with several delivery pipelines for all applications in the sample. Wait for the pipelines to build all Docker images and deploy all the apps. You can open all pipelines in new browser tabs to follow the deployments or you can wait for all apps to be ready in the Bluemix dashboard.
 
-1. Your apps are deployed. Head over the [walkthrough](https://github.com/IBM-Bluemix/logistics-wizard/blob/master/WALKTHROUGH.md) for a tour of the app.
+1. Your apps are deployed. Head over the [walkthrough](https://github.com/IBM-Cloud/logistics-wizard/blob/master/WALKTHROUGH.md) for a tour of the app.
 
 ## Using the Istio addons
 
